@@ -10,10 +10,11 @@ body {
     position: relative;
 }
 
-#word {
-    font-size: 80px;
+.word {
+    font-size: 8vw;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: lighter;
     color: #513578;
     position: absolute;
 }
+
