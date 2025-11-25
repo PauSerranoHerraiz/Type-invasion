@@ -6,6 +6,7 @@ body {
 #board {
     width: 100vw;
     height: 100vh;
+    /* border: 9px solid #513578; */
     overflow: hidden;
     position: relative;
 }
@@ -18,3 +19,27 @@ body {
     position: absolute;
 }
 
+#user-input{
+    width: 20vw;
+    height: 5vh;
+    font-size: 3vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 6px solid #828248;
+    background-color: #FFFE95;
+    position: relative;
+    top : 90vh;
+    left: 40vw;
+}
+
+#score{
+    font-size: 5vh;
+    position: absolute;
+    margin: 2vh;
+    top: 2vh;
+    font-family: ;
+}
+
+#page-gameover {
+    text-align: center;
+    background-color: rgb(216, 197, 232);
+}
