@@ -1,7 +1,11 @@
+
+let score = 0;
+let lives = 3;
+
 class Word {
     constructor() {
         this.text = this.getRandomWord()
-        this.positionX = Math.floor(Math.random() * 90)
+        this.positionX = Math.floor(Math.random() * 75)
         this.positionY = 0
         this.domElement = null
         this.speed = 0.2 + (Math.random() * 0.3)
@@ -22,8 +26,6 @@ class Word {
     moveDown() {
         this.positionY += this.speed;
         this.updateUi()
-
-
     }
     getRandomWord() {
         const words = ["cat", "dog", "sun", "moon", "star", "tree", "car", "bus", "ball", "book", "fish", "bird", "milk", "cake", "shoe", "rain", "snow",
@@ -49,36 +51,38 @@ class Word {
 
         return words[Math.floor(Math.random() * words.length)]
     }
-
-
 }
 
 
 const typedWord = document.getElementById("user-input");
-// console.log(typedWord.value);
-
 
 
 const wordInstancesArr = []
 
-// generate new words
 setInterval(() => {
     const newWordInstance = new Word()
     wordInstancesArr.push(newWordInstance)
 }, 5000)
 
+
 setInterval(() => {
     wordInstancesArr.forEach((element, i, arr) => {
         element.moveDown()
 
-       /* if (element.positionY > 100) {
-            location.href = "gameover.html";
-        } */
+        if (element.positionY > 100) {
+            element.domElement.remove()
+            wordInstancesArr.splice(i, 1)
+            lives -= 1;
+            updateLives();
+
+            if (lives <= 0) {
+                location.href = "gameover.html";
+            }
+        }
+
 
     })
 }, 40)
-
-
 
 typedWord.addEventListener("input", () => {
     const userText = typedWord.value.toLowerCase();
@@ -96,10 +100,30 @@ typedWord.addEventListener("input", () => {
             const index = wordInstancesArr.indexOf(wordInstance);
             wordInstancesArr.splice(index, 1);
             typedWord.value = "";
+
+            score += 10
+            updateScore()
         }
+
     });
 });
 
-let score = 0;
-function updateScore()
+
+function updateScore() {
+    document.getElementById("score").textContent = "POINTS: " + score;
+}
+
+
+function updateLives() {
+    document.getElementById("lives").textContent = "LIVES: " + lives
+}
+
+
+
+/* let finalScore = 0
+function showFinalScore() {
+    document.getElementById("finalScore").textContent = "POINTS: " + score
+
+}. */
+
 

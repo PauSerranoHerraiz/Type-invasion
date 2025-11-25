@@ -35,11 +35,22 @@ body {
     font-size: 5vh;
     position: absolute;
     margin: 2vh;
+    top: 2vh;x
+    font-family: ;
+}
+
+#lives{
+    font-size: 5vh;
+    position: absolute;
+    margin: 2vh;
     top: 2vh;
+    left: 85vw;
     font-family: ;
 }
 
 #page-gameover {
     text-align: center;
-    background-color: rgb(216, 197, 232);
+    background-image:url(../images/gameOver.jpg) ;
+    background-size: 100%;
+    
 }
