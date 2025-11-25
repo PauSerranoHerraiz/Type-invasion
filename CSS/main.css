@@ -1,5 +1,20 @@
+#home-page{
+    background-image:url(../images/typeinvaders.jpg) ;
+    background-size: 100%;
+}
+
+#play{
+    font-size: 10vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #7A2D35;
+    position: absolute;
+    left: 42vw;
+    top: 60vh;
+    text-decoration: none;
+}
+
 body {
-    background-color: antiquewhite;
+    background-color: #FAF9D7;
     margin: 0;
 }
 

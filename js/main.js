@@ -1,6 +1,8 @@
 
 let score = 0;
 let lives = 3;
+let gameSpeed = 0.2;
+let updateDifficulty = 100;
 
 class Word {
     constructor() {
@@ -8,7 +10,7 @@ class Word {
         this.positionX = Math.floor(Math.random() * 75)
         this.positionY = 0
         this.domElement = null
-        this.speed = 0.2 + (Math.random() * 0.3)
+        this.speed = gameSpeed + (Math.random() * 0.3)
         this.createDomElement()
         this.updateUi()
     }
@@ -111,6 +113,12 @@ typedWord.addEventListener("input", () => {
 
 function updateScore() {
     document.getElementById("score").textContent = "POINTS: " + score;
+    if (score >= updateDifficulty) {
+        gameSpeed += 0.2; 
+        updateDifficulty += 100; 
+        console.log("Dificultad aumentada → gameSpeed:", gameSpeed);
+    }
+
 }
 
 
@@ -120,10 +128,5 @@ function updateLives() {
 
 
 
-/* let finalScore = 0
-function showFinalScore() {
-    document.getElementById("finalScore").textContent = "POINTS: " + score
-
-}. */
 
 
