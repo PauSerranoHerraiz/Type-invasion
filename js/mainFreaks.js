@@ -5,12 +5,12 @@ let difficulty = 0;
 const soundCorrect = new Audio("./sound/sound2.mp3");
 const soundFail = new Audio("./sound/sound-fail.mp3");
 const soundLevelUp = new Audio("./sound/coin.wav")
-const minFontSize = 35;  
+const minFontSize = 35;
 const maxFontSize = 100;
-const colors = ["#513578", "#35786B", "#787635","#01F5DF" ]
-soundCorrect.volume = 0.5;
-soundFail.volume = 0.5;
-soundLevelUp.volume = 0.5;
+ const colors = ["#00ffff", "#ff00ff", "#80ff00", "#ff0000"]
+soundCorrect.volume = 0.7;
+soundFail.volume = 0.7;
+soundLevelUp.volume = 0.7;
 let gameSpeed = 0.2;
 let updateDifficulty = 50;
 let nextDifficultyAt = 50;
@@ -33,7 +33,7 @@ class Word {
         this.domElement.innerText = this.text;
         this.domElement.style.fontSize = this.fontSize + "px"
         this.domElement.style.color = this.color;
-        const parentElm = document.getElementById("board")
+        const parentElm = document.getElementById("board-geek")
         parentElm.appendChild(this.domElement)
     }
     updateUi() {
@@ -45,26 +45,30 @@ class Word {
         this.updateUi()
     }
     getRandomWord() {
-        const words = ["cat", "dog", "sun", "moon", "star", "tree", "car", "bus", "ball", "book", "fish", "bird", "milk", "cake", "shoe", "rain", "snow",
-            "wind", "apple", "bread", "house", "chair", "table", "water", "hand", "door", "light", "grass", "cloud", "rock", "cup", "map",
-            "hat", "toy", "phone", "game", "school", "street", "music", "color", "train", "plane", "mouse", "cheese", "beach", "sand",
-            "river", "baby", "leaf", "wood", "salt", "fire", "ice", "coat", "bag", "key", "note", "soap", "bed", "room", "jump", "run",
-            "fast", "slow", "happy", "sad", "open", "close", "blue", "red", "green", "yellow", "day", "night", "long", "short", "bridge", "silver", "ocean", "forest", "castle", "planet", "shadow", "marble", "lantern", "thunder", "harbor", "feather",
-            "canyon", "galaxy", "whisper", "meadow", "dolphin", "granite", "voyage", "captain", "compass", "rocket", "island", "mirror",
-            "tunnel", "winter", "summer", "spring", "autumn", "valley", "timber", "dragon", "crystal", "hunter", "ranger", "sailor",
-            "mountain", "pocket", "travel", "signal", "engine", "thunder", "stormy", "purple", "golden", "silver", "fabric", "copper",
-            "branch", "spider", "falcon", "tiger", "lion", "rabbit", "castle", "pirate", "singer", "artist", "window", "curtain",
-            "pillow", "helmet", "basket", "planet", "camera", "ticket", "market", "winter", "forest", "desert", "blossom", "branch", "ember", "glimmer", "crimson", "horizon", "echo", "willow", "rift", "tidal", "solstice", "hollow", "pinnacle", "twilight",
-            "spark", "wander", "quartz", "harvest", "mystic", "lumen", "velvet", "cinder", "lizard", "mariner", "thicket", "emberfall",
-            "brook", "clover", "frost", "sundrop", "meadowlight", "stormfall", "starlight", "fable", "cinderleaf", "moonstone",
-            "bramble", "evergreen", "gale", "dusk", "tremor", "blizzard", "drift", "voyager", "silent", "lighthouse", "orchard",
-            "harvest", "timber", "pebble", "cobalt", "quiver", "strider", "shadowed", "misty", "foggy", "tideless", "drifter",
-            "starling", "swift", "crown", "emberwind", "starborn", "silverleaf", "brightwood", "lonebird", "whirl", "mariner",
-            "boulder", "riftwood", "longbow", "skylight", "northwind", "stormwind", "nightfall", "sunstone", "ironwood", "signal", "castleway", "overland", "journey", "pathway", "cargo", "barrel", "string", "hollowtree", "raindrop", "sunbeam",
-            "petal", "breeze", "mint", "pepper", "silentwood", "rose", "bridgeway", "harvestor", "bluebird", "greensong", "candle",
-            "lanternwood", "tigerfall", "springwater", "shadowrun", "moonriver", "ironhand", "windmill", "raindance", "goldfish",
-            "butterfly", "snowflake", "wildflower", "pinecone", "backpack", "footstep", "laneside", "bookstore", "playground",
-            "sunshine", "evening", "morning", "midday", "shoreline", "sandstone", "seabird", "nightbird", "wildwind", "brightfall", "jazz", "blues", "music"]
+        const words = ["starwars", "darthvader", "skywalker", "yoda", "kenobi", "tatooine",
+            "millenniumfalcon", "starfighter", "matrix", "neo", "trinity", "morpheus",
+            "terminator", "skynet", "jurassicpark", "raptor", "godzilla", "kingkong",
+            "predator", "alien", "ripley", "starlord", "groot", "thanos", "infinitygauntlet",
+            "batman", "joker", "superman", "wonderwoman", "flash", "greenlantern",
+            "aquaman", "spiderman", "venom", "ironman", "captainamerica", "thor",
+            "hulk", "blackwidow", "hawkeye", "wolverine", "magneto", "deadpool",
+            "mario", "luigi", "bowser", "zelda", "link", "metroid", "samus", "kirby",
+            "pikachu", "charizard", "pokemon", "masterchief", "kratos", "atreus",
+            "sonic", "tails", "knuckles", "minecraft", "creeper", "enderman",
+            "fortnite", "overwatch", "tracer", "diablo", "starcraft", "warcraft",
+            "geralt", "witcher", "cyberpunk", "doomguy", "pacman", "tetris",
+            "megaman", "streetfighter", "ryu", "ken", "scorpion", "subzero", "raiden",
+            "mandalorian", "grogu", "strangerthings", "demogorgon", "breakingbad",
+            "heisenberg", "supernatural", "doctorwho", "tardis", "walkingdead",
+            "rickgrimes", "gameofthrones", "winterfell", "dragonstone",
+            "houseofdragon", "vampirediaries", "lost", "sherlock", "netflix", "hbo",
+            "goku", "vegeta", "gohan", "freezer", "cell", "majinbuu", "luffy", "zoro",
+            "sanji", "naruto", "sasuke", "kakashi", "itachi", "onepunchman",
+            "saitama", "tanjiro", "nezuko", "eren", "mikasa", "levi", "akira", "totoro",
+            "cosplay", "otaku", "manga", "comic", "easteregg", "trailer", "levelup",
+            "respawn", "sidequest", "lootbox", "bossfight", "lanparty", "speedrun",
+            "fandom", "crossover", "pixelart", "retro", "arcade", "eSports", "worldofwarcraft", "wookie", 
+            "chihiro", "mononoke", "solidsnake", "cloud", "finalfantasy", "dungeon", "dungeonCrawlerCarl"]
 
         return words[Math.floor(Math.random() * words.length)]
     }
@@ -136,16 +140,16 @@ typedWord.addEventListener("input", () => {
 
 
 function updateScore() {
-    document.getElementById("score").textContent = "POINTS: " + score;
+    document.getElementById("xp").textContent = "PUNTOS: " + score;
 
     if (score >= nextDifficultyAt) {
         soundLevelUp.currentTime = 0;
         soundLevelUp.play();
 
         gameSpeed += 0.2;
-        difficulty++;  
+        difficulty++;
 
-        nextDifficultyAt += 50; 
+        nextDifficultyAt += 50;
 
         difficultyCounter();
     }
@@ -154,7 +158,7 @@ function updateScore() {
 
 
 function difficultyCounter() {
-    document.getElementById("difficulty").textContent = "DIFFICULTY: " + difficulty;
+    document.getElementById("level").textContent = "DIFICULTAD: " + difficulty;
     if (updateDifficulty) {
         difficulty += 1
         updateDifficulty = false;
@@ -165,7 +169,7 @@ function difficultyCounter() {
 
 
 function updateLives() {
-    document.getElementById("lives").textContent = "LIVES: " + lives
+    document.getElementById("hp").textContent = "VIDAS: " + lives
 }
 
 const indexMusic = document.getElementById("index-music")

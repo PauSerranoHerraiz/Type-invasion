@@ -135,7 +135,7 @@ typedWord.addEventListener("input", () => {
 
 
 function updateScore() {
-    document.getElementById("score").textContent = "POINTS: " + score;
+    document.getElementById("score").textContent = "PUNTOS: " + score;
 
     if (score >= nextDifficultyAt) {
         soundLevelUp.currentTime = 0;
@@ -153,7 +153,7 @@ function updateScore() {
 
 
 function difficultyCounter() {
-    document.getElementById("difficulty").textContent = "DIFFICULTY: " + difficulty;
+    document.getElementById("difficulty").textContent = "DIFICULTAD: " + difficulty;
     if (updateDifficulty) {
         difficulty += 1
         updateDifficulty = false;
@@ -164,7 +164,7 @@ function difficultyCounter() {
 
 
 function updateLives() {
-    document.getElementById("lives").textContent = "LIVES: " + lives
+    document.getElementById("lives").textContent = "VIDAS: " + lives
 }
 
 const indexMusic = document.getElementById("index-music")

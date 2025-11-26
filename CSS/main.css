@@ -26,8 +26,32 @@ body {
     text-decoration: none;
 }
 
+#juega {
+    font-size: clamp(2rem, 8vw, 10vh);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #7A2D35;
+    position: absolute;
+    left: center;
+    top: 73vh;
+    text-decoration: none;
+}
+
+#geek {
+    font-size: clamp(2rem, 8vw, 10vh);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #7A2D35;
+    position: absolute;
+    left: center;
+    top: 83vh;
+    text-decoration: none;
+}
+
 body {
     background-color: #FAF9D7;
+    margin: 0;
+}
+#body-geek{
+    background-color: #1F1F1F;
     margin: 0;
 }
 
@@ -35,6 +59,17 @@ body {
     width: 100%;
     height: 100%;
     /* border: 9px solid #513578; */
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#board-geek {
+    width: 100%;
+    height: 100%;
+    /* border: 9px solid #513578; */
+    
     overflow: hidden;
     position: relative;
     padding: 0;
@@ -63,7 +98,17 @@ body {
 }
 
 #score {
-    font-size: clamp(1rem, 4vw, 5vh);;
+    font-size: clamp(1rem, 4vw, 5vh);
+    ;
+    position: absolute;
+    margin: 2vh;
+    top: 2vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#xp {
+    font-size: clamp(1rem, 4vw, 5vh);
+    color: #FAF9D7;
     position: absolute;
     margin: 2vh;
     top: 2vh;
@@ -79,8 +124,28 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+#hp {
+    font-size: clamp(1rem, 4vw, 5vh);
+    color: #FAF9D7;
+    position: absolute;
+    margin: 2vh;
+    top: 2vh;
+    left: 82vw;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 #difficulty {
     font-size: clamp(1rem, 4vw, 5vh);
+    position: absolute;
+    margin: 2vh;
+    top: 2vh;
+    left: 40vw;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#level{
+    font-size: clamp(1rem, 4vw, 5vh);
+    color: #FAF9D7;
     position: absolute;
     margin: 2vh;
     top: 2vh;
@@ -104,7 +169,8 @@ body {
 }
 
 #play-again {
-    font-size: clamp(2rem, 8vw, 10vh);;
+    font-size: clamp(2rem, 8vw, 10vh);
+    ;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #7A2D35;
     position: absolute;
@@ -114,7 +180,8 @@ body {
 }
 
 #final-score {
-    font-size: clamp(2rem, 8vw, 10vh);;
+    font-size: clamp(2rem, 8vw, 10vh);
+    ;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #7A2D35;
     position: absolute;
@@ -123,6 +190,3 @@ body {
     text-decoration: none;
     padding: 5px;
 }
-
-
-  
