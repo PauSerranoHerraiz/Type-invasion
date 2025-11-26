@@ -1,6 +1,12 @@
 
 let score = 0;
 let lives = 3;
+const soundCorrect = new Audio("./sound/sound2.mp3");
+const soundFail = new Audio("./sound/sound-fail.mp3");
+const soundLevelUp = new Audio("./sound/coin.wav")
+soundCorrect.volume = 0.5;
+soundFail.volume = 0.5;
+soundLevelUp.volume = 0.5
 let gameSpeed = 0.2;
 let updateDifficulty = 100;
 
@@ -74,6 +80,8 @@ setInterval(() => {
         if (element.positionY > 100) {
             element.domElement.remove()
             wordInstancesArr.splice(i, 1)
+            soundFail.currentTime = 0;
+            soundFail.play();
             lives -= 1;
             updateLives();
 
@@ -81,6 +89,8 @@ setInterval(() => {
                 location.href = "gameover.html";
             }
         }
+
+
 
 
     })
@@ -98,6 +108,9 @@ typedWord.addEventListener("input", () => {
         }
 
         if (wordInstance.text === userText) {
+
+            soundCorrect.currentTime = 0;
+            soundCorrect.play();
             wordInstance.domElement.remove();
             const index = wordInstancesArr.indexOf(wordInstance);
             wordInstancesArr.splice(index, 1);
@@ -114,9 +127,11 @@ typedWord.addEventListener("input", () => {
 function updateScore() {
     document.getElementById("score").textContent = "POINTS: " + score;
     if (score >= updateDifficulty) {
-        gameSpeed += 0.2; 
-        updateDifficulty += 100; 
-        console.log("Dificultad aumentada → gameSpeed:", gameSpeed);
+        soundLevelUp.currentTime = 0;
+        soundLevelUp.play();
+        gameSpeed += 0.2;
+        updateDifficulty += 100;
+        //console.log("Dificultad aumentada → gameSpeed:", gameSpeed);
     }
 
 }
@@ -125,6 +140,25 @@ function updateScore() {
 function updateLives() {
     document.getElementById("lives").textContent = "LIVES: " + lives
 }
+
+const indexMusic = document.getElementById("index-music")
+
+/* document.addEventListener("click", () => {
+    indexMusic.volume = 0.2; 
+    indexMusic.play();
+},);
+*/
+
+const gameMusic = document.getElementById("game-music")
+
+document.addEventListener("click", () => {
+    gameMusic.volume = 0.2;
+    gameMusic.play();
+},);
+
+
+
+;
 
 
 

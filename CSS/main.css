@@ -1,5 +1,5 @@
 #home-page{
-    background-image:url(../images/typeinvaders.jpg) ;
+    background-image:url(../images/typeinvasion.jpg) ;
     background-size: 100%;
 }
 
@@ -7,7 +7,7 @@
     font-size: 10vh;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #7A2D35;
-    position: absolute;
+    position: relative;
     left: 42vw;
     top: 60vh;
     text-decoration: none;
