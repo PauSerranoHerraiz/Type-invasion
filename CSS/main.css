@@ -1,15 +1,28 @@
-#home-page{
-    background-image:url(../images/typeinvasion.jpg) ;
-    background-size: 100%;
+html,
+body {
+    height: 100%;
+    margin: 0;
 }
 
-#play{
-    font-size: 10vh;
+#home-page {
+    height: 100%;
+    width: 100%;
+    background-image: url(../images/typeinvasion.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#play {
+    font-size: clamp(2rem, 8vw, 10vh);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #7A2D35;
-    position: relative;
+    position: absolute;
     left: 42vw;
-    top: 60vh;
+    top: 63vh;
     text-decoration: none;
 }
 
@@ -19,53 +32,76 @@ body {
 }
 
 #board {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     /* border: 9px solid #513578; */
     overflow: hidden;
     position: relative;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .word {
-    font-size: 8vw;
+    font-size: clamp(5rem, 4vw, 2rem);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: lighter;
     color: #513578;
     position: absolute;
+    white-space: nowrap;
 }
 
-#user-input{
+#user-input {
     width: 20vw;
     height: 5vh;
     font-size: 3vh;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     border: 6px solid #828248;
     background-color: #FFFE95;
-    position: relative;
-    top : 90vh;
+    position: absolute;
+    top: 90vh;
     left: 40vw;
 }
 
-#score{
-    font-size: 5vh;
+#score {
+    font-size: clamp(1rem, 4vw, 5vh);;
     position: absolute;
     margin: 2vh;
-    top: 2vh;x
-    font-family: ;
+    top: 2vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#lives{
-    font-size: 5vh;
+#lives {
+    font-size: clamp(1rem, 4vw, 5vh);
     position: absolute;
     margin: 2vh;
     top: 2vh;
     left: 85vw;
-    font-family: ;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #page-gameover {
+    height: 100%;
+    width: 100%;
+    background-image: url('../images/gameOver.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     text-align: center;
-    background-image:url(../images/gameOver.jpg) ;
-    background-size: 100%;
-    
+    color: #FAF9D7;
 }
+
+#play-again {
+    font-size: clamp(2rem, 8vw, 10vh);;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #7A2D35;
+    position: absolute;
+    left: 38vw;
+    top: 67vh;
+    text-decoration: none;
+}
+
+  

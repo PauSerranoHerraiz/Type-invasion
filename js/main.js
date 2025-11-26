@@ -155,12 +155,3 @@ document.addEventListener("click", () => {
     gameMusic.volume = 0.2;
     gameMusic.play();
 },);
-
-
-
-;
-
-
-
-
-
