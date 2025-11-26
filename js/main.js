@@ -1,6 +1,7 @@
 
 let score = 0;
 let lives = 3;
+let difficulty = 0;
 const soundCorrect = new Audio("./sound/sound2.mp3");
 const soundFail = new Audio("./sound/sound-fail.mp3");
 const soundLevelUp = new Audio("./sound/coin.wav")
@@ -9,9 +10,10 @@ const maxFontSize = 100;
 const colors = ["#513578", "#35786B", "#787635","#01F5DF" ]
 soundCorrect.volume = 0.5;
 soundFail.volume = 0.5;
-soundLevelUp.volume = 0.5
+soundLevelUp.volume = 0.5;
 let gameSpeed = 0.2;
 let updateDifficulty = 50;
+let nextDifficultyAt = 50;
 
 class Word {
     constructor() {
@@ -135,15 +137,31 @@ typedWord.addEventListener("input", () => {
 
 function updateScore() {
     document.getElementById("score").textContent = "POINTS: " + score;
-    if (score >= updateDifficulty) {
+
+    if (score >= nextDifficultyAt) {
         soundLevelUp.currentTime = 0;
         soundLevelUp.play();
+
         gameSpeed += 0.2;
-        updateDifficulty += 50;
-        //console.log("Dificultad aumentada → gameSpeed:", gameSpeed);
+        difficulty++;  // sube dificultad correctamente
+
+        nextDifficultyAt += 50; // siguiente nivel en +50 puntos
+
+        difficultyCounter();
+    }
+}
+
+
+
+function difficultyCounter() {
+    document.getElementById("difficulty").textContent = "DIFFICULTY: " + difficulty;
+    if (updateDifficulty) {
+        difficulty += 1
+        updateDifficulty = false;
     }
 
 }
+
 
 
 function updateLives() {
