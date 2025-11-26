@@ -21,7 +21,7 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #7A2D35;
     position: absolute;
-    left: 42vw;
+    left: center;
     top: 63vh;
     text-decoration: none;
 }
@@ -42,7 +42,7 @@ body {
 }
 
 .word {
-    font-size: clamp(5rem, 4vw, 2rem);
+    /* font-size: clamp(5rem, 4vw, 2rem); */
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: lighter;
     color: #513578;
@@ -75,7 +75,16 @@ body {
     position: absolute;
     margin: 2vh;
     top: 2vh;
-    left: 85vw;
+    left: 82vw;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#difficulty {
+    font-size: clamp(1rem, 4vw, 5vh);
+    position: absolute;
+    margin: 2vh;
+    top: 2vh;
+    left: 40vw;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -99,9 +108,21 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #7A2D35;
     position: absolute;
-    left: 38vw;
+    left: center;
     top: 67vh;
     text-decoration: none;
 }
+
+#final-score {
+    font-size: clamp(2rem, 8vw, 10vh);;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #7A2D35;
+    position: absolute;
+    left: center;
+    top: 20vh;
+    text-decoration: none;
+    padding: 5px;
+}
+
 
   

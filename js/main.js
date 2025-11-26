@@ -4,17 +4,22 @@ let lives = 3;
 const soundCorrect = new Audio("./sound/sound2.mp3");
 const soundFail = new Audio("./sound/sound-fail.mp3");
 const soundLevelUp = new Audio("./sound/coin.wav")
+const minFontSize = 35;  
+const maxFontSize = 100;
+const colors = ["#513578", "#35786B", "#787635","#01F5DF" ]
 soundCorrect.volume = 0.5;
 soundFail.volume = 0.5;
 soundLevelUp.volume = 0.5
 let gameSpeed = 0.2;
-let updateDifficulty = 100;
+let updateDifficulty = 50;
 
 class Word {
     constructor() {
         this.text = this.getRandomWord()
         this.positionX = Math.floor(Math.random() * 75)
         this.positionY = 0
+        this.fontSize = Math.floor(Math.random() * (maxFontSize - minFontSize)) + minFontSize;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
         this.domElement = null
         this.speed = gameSpeed + (Math.random() * 0.3)
         this.createDomElement()
@@ -24,6 +29,8 @@ class Word {
         this.domElement = document.createElement("div")
         this.domElement.className = "word"
         this.domElement.innerText = this.text;
+        this.domElement.style.fontSize = this.fontSize + "px"
+        this.domElement.style.color = this.color;
         const parentElm = document.getElementById("board")
         parentElm.appendChild(this.domElement)
     }
@@ -70,7 +77,7 @@ const wordInstancesArr = []
 setInterval(() => {
     const newWordInstance = new Word()
     wordInstancesArr.push(newWordInstance)
-}, 5000)
+}, 3000)
 
 
 setInterval(() => {
@@ -86,12 +93,14 @@ setInterval(() => {
             updateLives();
 
             if (lives <= 0) {
+                localStorage.setItem("lastScore", score);
+                location.href = "gameover.html";
+            }
+
+            if (lives <= 0) {
                 location.href = "gameover.html";
             }
         }
-
-
-
 
     })
 }, 40)
@@ -104,7 +113,7 @@ typedWord.addEventListener("input", () => {
         if (wordInstance.text.startsWith(userText) && userText.length > 0) {
             wordInstance.domElement.style.color = "green";
         } else {
-            wordInstance.domElement.style.color = "black";
+            wordInstance.domElement.style.color = wordInstance.color;;
         }
 
         if (wordInstance.text === userText) {
@@ -130,7 +139,7 @@ function updateScore() {
         soundLevelUp.currentTime = 0;
         soundLevelUp.play();
         gameSpeed += 0.2;
-        updateDifficulty += 100;
+        updateDifficulty += 50;
         //console.log("Dificultad aumentada → gameSpeed:", gameSpeed);
     }
 
