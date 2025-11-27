@@ -67,8 +67,8 @@ class Word {
             "saitama", "ranma", "haikyuu", "arcane", "jinx", "guybrush", "akira", "totoro",
             "cosplay", "otaku", "manga", "comic", "easteregg", "trailer", "levelup",
             "respawn", "sidequest", "lootbox", "bossfight", "lanparty", "speedrun",
-            "fandom", "crossover", "pixelart", "retro", "arcade", "eSports", "mtg", "wookie",
-            "chihiro", "mononoke", "solidsnake", "cloud", "finalfantasy", "dungeon", "CrawlerCarl",
+            "fandom", "crossover", "pixelart", "retro", "arcade", "esports", "mtg", "wookie",
+            "chihiro", "mononoke", "solidsnake", "cloud", "finalfantasy", "dungeon", "crawlercarl",
             "princessdonut", "grog", "castlevania", "sora", "pacman", "sheldon", "tyrion", "arya"]
 
         return words[Math.floor(Math.random() * words.length)]

@@ -5,9 +5,9 @@ let difficulty = 0;
 const soundCorrect = new Audio("./sound/sound2.mp3");
 const soundFail = new Audio("./sound/sound-fail.mp3");
 const soundLevelUp = new Audio("./sound/coin.wav")
-const minFontSize = 35;  
+const minFontSize = 35;
 const maxFontSize = 100;
-const colors = ["#513578", "#35786B", "#787635","#01F5DF" ]
+const colors = ["#513578", "#35786B", "#787635", "#01F5DF"]
 soundCorrect.volume = 0.5;
 soundFail.volume = 0.5;
 soundLevelUp.volume = 0.5;
@@ -18,7 +18,7 @@ let nextDifficultyAt = 50;
 class Word {
     constructor() {
         this.text = this.getRandomWord()
-        this.positionX = Math.floor(Math.random() * 75)
+        this.positionX = Math.floor(Math.random() * 60)
         this.positionY = 0
         this.fontSize = Math.floor(Math.random() * (maxFontSize - minFontSize)) + minFontSize;
         this.color = colors[Math.floor(Math.random() * colors.length)];
@@ -99,7 +99,7 @@ setInterval(() => {
                 location.href = "./gameover.html";
             }
 
-            
+
         }
 
     })
@@ -144,9 +144,9 @@ function updateScore() {
         soundLevelUp.play();
 
         gameSpeed += 0.2;
-        difficulty++;  
+        difficulty++;
 
-        nextDifficultyAt += 50; 
+        nextDifficultyAt += 50;
 
         difficultyCounter();
     }
@@ -175,7 +175,7 @@ const indexMusic = document.getElementById("index-music")
     indexMusic.volume = 0.2; 
     indexMusic.play();
 },);
-*/
+                    */
 
 const gameMusic = document.getElementById("game-music")
 

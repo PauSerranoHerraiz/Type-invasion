@@ -1,8 +1,7 @@
-html,
-
-body {
+html, body, #body.geek, #board-geek {
     height: 100%;
     margin: 0;
+    padding: 0;
 }
 
 #home-page {
@@ -215,6 +214,22 @@ body {
     color: #FAF9D7;
 }
 
+#page-gameover-geek {
+    height: 100%;
+    width: 100%;
+    background-image: url('../images/GameoverRetro.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    color: #FAF9D7;
+}
+
+
 #play-again {
     font-size: clamp(2rem, 8vw, 10vh);
     ;
@@ -285,4 +300,32 @@ body {
 #hud div:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: scale(1.05);
+}
+
+#board-geek {
+    background: linear-gradient(135deg, #0a0a0a, #194404);
+    background-size: 300% 300%;
+    animation: bgMove 8s ease infinite;
+}
+
+@keyframes bgMove {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+.animated-bg {
+  background: linear-gradient(120deg, #FAF9D7, #D7EEFA, #F1F0D0, #9fe1ed);
+  background-size: 300% 300%;
+  animation: bgShift 12s ease infinite;
+}
+@keyframes bgShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-bg { animation: none; }
 }

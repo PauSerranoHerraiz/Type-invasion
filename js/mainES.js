@@ -18,7 +18,7 @@ let nextDifficultyAt = 50;
 class Word {
     constructor() {
         this.text = this.getRandomWord()
-        this.positionX = Math.floor(Math.random() * 75)
+        this.positionX = Math.floor(Math.random() * 60)
         this.positionY = 0
         this.fontSize = Math.floor(Math.random() * (maxFontSize - minFontSize)) + minFontSize;
         this.color = colors[Math.floor(Math.random() * colors.length)];
