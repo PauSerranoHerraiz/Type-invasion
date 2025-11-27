@@ -96,11 +96,11 @@ setInterval(() => {
 
             if (lives <= 0) {
                 localStorage.setItem("lastScore", score);
-                location.href = "./gameover.html";
+                location.href = "../gameover.html";
             }
 
             if (lives <= 0) {
-                location.href = "./gameover.html";
+                location.href = "../gameover.html";
             }
         }
 
