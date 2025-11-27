@@ -7,7 +7,7 @@ const soundFail = new Audio("./sound/sound-fail.mp3");
 const soundLevelUp = new Audio("./sound/coin.wav")
 const minFontSize = 35;
 const maxFontSize = 100;
- const colors = ["#00ffff", "#ff00ff", "#80ff00", "#ff0000"]
+const colors = ["#00ffff", "#ff00ff", "#80ff00", "#ff0000"]
 soundCorrect.volume = 0.7;
 soundFail.volume = 0.7;
 soundLevelUp.volume = 0.7;
@@ -18,7 +18,7 @@ let nextDifficultyAt = 50;
 class Word {
     constructor() {
         this.text = this.getRandomWord()
-        this.positionX = Math.floor(Math.random() * 75)
+        this.positionX = Math.floor(Math.random() * 60)
         this.positionY = 0
         this.fontSize = Math.floor(Math.random() * (maxFontSize - minFontSize)) + minFontSize;
         this.color = colors[Math.floor(Math.random() * colors.length)];
@@ -29,7 +29,7 @@ class Word {
     }
     createDomElement() {
         this.domElement = document.createElement("div")
-        this.domElement.className = "word"
+        this.domElement.className = "wordGeek"
         this.domElement.innerText = this.text;
         this.domElement.style.fontSize = this.fontSize + "px"
         this.domElement.style.color = this.color;
@@ -48,13 +48,13 @@ class Word {
         const words = ["starwars", "darthvader", "skywalker", "yoda", "kenobi", "tatooine",
             "millenniumfalcon", "starfighter", "matrix", "neo", "trinity", "morpheus",
             "terminator", "skynet", "jurassicpark", "raptor", "godzilla", "kingkong",
-            "predator", "alien", "ripley", "starlord", "groot", "thanos", "infinitygauntlet",
+            "predator", "alien", "ripley", "starlord", "groot", "thanos", 
             "batman", "joker", "superman", "wonderwoman", "flash", "greenlantern",
             "aquaman", "spiderman", "venom", "ironman", "captainamerica", "thor",
             "hulk", "blackwidow", "hawkeye", "wolverine", "magneto", "deadpool",
             "mario", "luigi", "bowser", "zelda", "link", "metroid", "samus", "kirby",
             "pikachu", "charizard", "pokemon", "masterchief", "kratos",
-            "sonic", "tails", "knuckles", "minecraft", 
+            "sonic", "tails", "knuckles", "minecraft",
             "fortnite", "overwatch", "tracer", "diablo", "starcraft", "warcraft",
             "geralt", "witcher", "cyberpunk", "doomguy", "pacman", "tetris",
             "megaman", "streetfighter", "ryu", "ken", "scorpion", "subzero", "raiden",
@@ -67,9 +67,9 @@ class Word {
             "saitama", "ranma", "haikyuu", "arcane", "jinx", "guybrush", "akira", "totoro",
             "cosplay", "otaku", "manga", "comic", "easteregg", "trailer", "levelup",
             "respawn", "sidequest", "lootbox", "bossfight", "lanparty", "speedrun",
-            "fandom", "crossover", "pixelart", "retro", "arcade", "eSports", "worldofwarcraft", "wookie", 
-            "chihiro", "mononoke", "solidsnake", "cloud", "finalfantasy", "dungeon", "dungeonCrawlerCarl", 
-            "princessdonut", "grog", "castlevania", "sora", "pacman", "sheldon","tyrion", "arya"]
+            "fandom", "crossover", "pixelart", "retro", "arcade", "eSports", "mtg", "wookie",
+            "chihiro", "mononoke", "solidsnake", "cloud", "finalfantasy", "dungeon", "CrawlerCarl",
+            "princessdonut", "grog", "castlevania", "sora", "pacman", "sheldon", "tyrion", "arya"]
 
         return words[Math.floor(Math.random() * words.length)]
     }
@@ -104,7 +104,7 @@ setInterval(() => {
                 location.href = "./gameover.html";
             }
 
-          
+
         }
 
     })
@@ -125,7 +125,10 @@ typedWord.addEventListener("input", () => {
 
             soundCorrect.currentTime = 0;
             soundCorrect.play();
-            wordInstance.domElement.remove();
+            wordInstance.domElement.classList.add("explode");
+            setTimeout(() => {
+                wordInstance.domElement.remove();
+            }, 300);
             const index = wordInstancesArr.indexOf(wordInstance);
             wordInstancesArr.splice(index, 1);
             typedWord.value = "";

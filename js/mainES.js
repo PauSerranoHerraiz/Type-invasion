@@ -119,7 +119,10 @@ typedWord.addEventListener("input", () => {
 
             soundCorrect.currentTime = 0;
             soundCorrect.play();
-            wordInstance.domElement.remove();
+            wordInstance.domElement.classList.add("explode");
+            setTimeout(() => {
+                wordInstance.domElement.remove();
+            }, 300);
             const index = wordInstancesArr.indexOf(wordInstance);
             wordInstancesArr.splice(index, 1);
             typedWord.value = "";
