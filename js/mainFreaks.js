@@ -53,22 +53,23 @@ class Word {
             "aquaman", "spiderman", "venom", "ironman", "captainamerica", "thor",
             "hulk", "blackwidow", "hawkeye", "wolverine", "magneto", "deadpool",
             "mario", "luigi", "bowser", "zelda", "link", "metroid", "samus", "kirby",
-            "pikachu", "charizard", "pokemon", "masterchief", "kratos", "atreus",
-            "sonic", "tails", "knuckles", "minecraft", "creeper", "enderman",
+            "pikachu", "charizard", "pokemon", "masterchief", "kratos",
+            "sonic", "tails", "knuckles", "minecraft", 
             "fortnite", "overwatch", "tracer", "diablo", "starcraft", "warcraft",
             "geralt", "witcher", "cyberpunk", "doomguy", "pacman", "tetris",
             "megaman", "streetfighter", "ryu", "ken", "scorpion", "subzero", "raiden",
             "mandalorian", "grogu", "strangerthings", "demogorgon", "breakingbad",
             "heisenberg", "supernatural", "doctorwho", "tardis", "walkingdead",
             "rickgrimes", "gameofthrones", "winterfell", "dragonstone",
-            "houseofdragon", "vampirediaries", "lost", "sherlock", "netflix", "hbo",
+            "houseofdragon", "daenerys", "vampirediaries", "lost", "sherlock", "netflix", "hbo",
             "goku", "vegeta", "gohan", "freezer", "cell", "majinbuu", "luffy", "zoro",
             "sanji", "naruto", "sasuke", "kakashi", "itachi", "onepunchman",
-            "saitama", "tanjiro", "nezuko", "eren", "mikasa", "levi", "akira", "totoro",
+            "saitama", "ranma", "haikyuu", "arcane", "jinx", "guybrush", "akira", "totoro",
             "cosplay", "otaku", "manga", "comic", "easteregg", "trailer", "levelup",
             "respawn", "sidequest", "lootbox", "bossfight", "lanparty", "speedrun",
             "fandom", "crossover", "pixelart", "retro", "arcade", "eSports", "worldofwarcraft", "wookie", 
-            "chihiro", "mononoke", "solidsnake", "cloud", "finalfantasy", "dungeon", "dungeonCrawlerCarl"]
+            "chihiro", "mononoke", "solidsnake", "cloud", "finalfantasy", "dungeon", "dungeonCrawlerCarl", 
+            "princessdonut", "grog", "castlevania", "sora", "pacman", "sheldon","tyrion", "arya"]
 
         return words[Math.floor(Math.random() * words.length)]
     }
@@ -100,11 +101,11 @@ setInterval(() => {
 
             if (lives <= 0) {
                 localStorage.setItem("lastScore", score);
-                location.href = "gameover.html";
+                location.href = "./gameover.html";
             }
 
             if (lives <= 0) {
-                location.href = "gameover.html";
+                location.href = "./gameover.html";
             }
         }
 
@@ -140,7 +141,7 @@ typedWord.addEventListener("input", () => {
 
 
 function updateScore() {
-    document.getElementById("xp").textContent = "PUNTOS: " + score;
+    document.getElementById("xp").textContent = "XP: " + score;
 
     if (score >= nextDifficultyAt) {
         soundLevelUp.currentTime = 0;
@@ -158,7 +159,7 @@ function updateScore() {
 
 
 function difficultyCounter() {
-    document.getElementById("level").textContent = "DIFICULTAD: " + difficulty;
+    document.getElementById("level").textContent = "LEVEL: " + difficulty;
     if (updateDifficulty) {
         difficulty += 1
         updateDifficulty = false;
@@ -169,7 +170,7 @@ function difficultyCounter() {
 
 
 function updateLives() {
-    document.getElementById("hp").textContent = "VIDAS: " + lives
+    document.getElementById("hp").textContent = "HP: " + lives
 }
 
 const indexMusic = document.getElementById("index-music")
