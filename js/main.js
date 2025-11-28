@@ -18,6 +18,7 @@ let nextDifficultyAt = 50;
 class Word {
     constructor() {
         this.text = this.getRandomWord()
+                    this.isForbidden = Math.random() < 0.15;
         this.positionX = Math.floor(Math.random() * 60)
         this.positionY = 0
         this.fontSize = Math.floor(Math.random() * (maxFontSize - minFontSize)) + minFontSize;
@@ -35,6 +36,10 @@ class Word {
         this.domElement.style.color = this.color;
         const parentElm = document.getElementById("board")
         parentElm.appendChild(this.domElement)
+
+                        if (this.isForbidden) {
+                    this.domElement.classList.add("forbidden");
+}
     }
     updateUi() {
         this.domElement.style.left = this.positionX + "vw";
@@ -85,22 +90,30 @@ setInterval(() => {
 setInterval(() => {
     wordInstancesArr.forEach((element, i, arr) => {
         element.moveDown()
+if (element.positionY > 100) {
 
-        if (element.positionY > 100) {
-            element.domElement.remove()
-            wordInstancesArr.splice(i, 1)
-            soundFail.currentTime = 0;
-            soundFail.play();
-            lives -= 1;
-            updateLives();
+    element.domElement.remove();
+    wordInstancesArr.splice(i, 1);
 
-            if (lives <= 0) {
-                localStorage.setItem("lastScore", score);
-                location.href = "./gameover.html";
-            }
+    // ⛔ Si la palabra es prohibida, NO restamos vidas
+    if (element.isForbidden) {
+        return;
+    }
 
+    // Si NO es prohibida, sí restamos vidas
+    soundFail.currentTime = 0;
+    soundFail.play();
 
-        }
+    lives -= 1;
+    updateLives();
+
+    if (lives <= 0) {
+        localStorage.setItem("lastScore", score);
+        location.href = "./gameover.html";
+    }
+}
+
+        
 
     })
 }, 40)
@@ -115,6 +128,25 @@ typedWord.addEventListener("input", () => {
         } else {
             wordInstance.domElement.style.color = wordInstance.color;;
         }
+
+                                if (wordInstance.isForbidden && wordInstance.text === userText) {
+                soundFail.currentTime = 0;
+                soundFail.play();
+
+                lives -= 1;
+                updateLives();
+
+                wordInstance.domElement.remove();
+                wordInstancesArr.splice(wordInstancesArr.indexOf(wordInstance), 1);
+                typedWord.value = "";
+
+                if (lives <= 0) {
+                    localStorage.setItem("lastScore", score);
+                    location.href = "../gameover.html";
+                }
+
+                return; // evita que sume puntos
+            }
 
         if (wordInstance.text === userText) {
 

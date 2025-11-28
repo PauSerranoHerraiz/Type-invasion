@@ -18,6 +18,7 @@ let nextDifficultyAt = 50;
 class Word {
     constructor() {
         this.text = this.getRandomWord()
+        this.isForbidden = Math.random() < 0.15;
         this.positionX = Math.floor(Math.random() * 60)
         this.positionY = 0
         this.fontSize = Math.floor(Math.random() * (maxFontSize - minFontSize)) + minFontSize;
@@ -35,6 +36,9 @@ class Word {
         this.domElement.style.color = this.color;
         const parentElm = document.getElementById("board-geek")
         parentElm.appendChild(this.domElement)
+                                if (this.isForbidden) {
+                    this.domElement.classList.add("forbidden");
+}
     }
     updateUi() {
         this.domElement.style.left = this.positionX + "vw";
@@ -61,7 +65,7 @@ class Word {
             "mandalorian", "grogu", "strangerthings", "demogorgon", "breakingbad",
             "heisenberg", "supernatural", "doctorwho", "tardis", "walkingdead",
             "rickgrimes", "gameofthrones", "winterfell", "dragonstone",
-            "houseofdragon", "daenerys", "vampirediaries", "lost", "sherlock", "netflix", "hbo",
+            "houseofdragon", "daenerys", "lost", "sherlock", "netflix", "hbo",
             "goku", "vegeta", "gohan", "freezer", "cell", "majinbuu", "luffy", "zoro",
             "sanji", "naruto", "sasuke", "kakashi", "itachi", "onepunchman",
             "saitama", "ranma", "haikyuu", "arcane", "jinx", "guybrush", "akira", "totoro",
@@ -92,20 +96,25 @@ setInterval(() => {
         element.moveDown()
 
         if (element.positionY > 100) {
-            element.domElement.remove()
-            wordInstancesArr.splice(i, 1)
-            soundFail.currentTime = 0;
-            soundFail.play();
-            lives -= 1;
-            updateLives();
 
-            if (lives <= 0) {
-                localStorage.setItem("lastScore", score);
-                location.href = "./gameover.html";
-            }
+    element.domElement.remove();
+    wordInstancesArr.splice(i, 1);
 
+    if (element.isForbidden) {
+        return;
+    }
 
-        }
+    soundFail.currentTime = 0;
+    soundFail.play();
+
+    lives -= 1;
+    updateLives();
+
+    if (lives <= 0) {
+        localStorage.setItem("lastScore", score);
+        location.href = "./gameover.html";
+    }
+}
 
     })
 }, 40)
@@ -120,6 +129,26 @@ typedWord.addEventListener("input", () => {
         } else {
             wordInstance.domElement.style.color = wordInstance.color;;
         }
+
+
+                                if (wordInstance.isForbidden && wordInstance.text === userText) {
+                soundFail.currentTime = 0;
+                soundFail.play();
+
+                lives -= 1;
+                updateLives();
+
+                wordInstance.domElement.remove();
+                wordInstancesArr.splice(wordInstancesArr.indexOf(wordInstance), 1);
+                typedWord.value = "";
+
+                if (lives <= 0) {
+                    localStorage.setItem("lastScore", score);
+                    location.href = "../gameover.html";
+                }
+
+                return; 
+            }
 
         if (wordInstance.text === userText) {
 

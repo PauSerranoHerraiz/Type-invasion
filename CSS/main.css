@@ -21,7 +21,7 @@ html, body, #body.geek, #board-geek {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #7A2D35;
     position: absolute;
-    left: center;
+    left: 40vw;
     top: 53vh;
     text-decoration: none;
     color: #fff;
@@ -43,8 +43,8 @@ html, body, #body.geek, #board-geek {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #7A2D35;
     position: absolute;
-    left: center;
-    top: 65vh;
+    left: 20vw;
+    top: 53vh;
     text-decoration: none;
     color: #fff;
     text-shadow: 1px 1px 5px black;
@@ -63,8 +63,8 @@ html, body, #body.geek, #board-geek {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #7A2D35;
     position: absolute;
-    left: center;
-    top: 77vh;
+    left: 55vw;
+    top: 53vh;
     text-decoration: none;
     color: #fff;
     text-shadow: 1px 1px 5px black;
@@ -232,13 +232,22 @@ body {
 
 #play-again {
     font-size: clamp(2rem, 8vw, 10vh);
-    ;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #7A2D35;
     position: absolute;
     left: center;
-    top: 67vh;
+    top: 69vh;
     text-decoration: none;
+    color: #fff;
+    text-shadow: 1px 1px 5px black;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+}
+
+#play-again:hover {
+    background: #36647A;
+    transform: scale(1.05);
 }
 
 #final-score {
@@ -328,4 +337,32 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .animated-bg { animation: none; }
+}
+
+.forbidden {
+    color: red !important;
+    text-shadow: 0 0 10px red, 0 0 20px crimson;
+    animation: forbiddenPulse 1s infinite;
+}
+
+@keyframes forbiddenPulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+#instructions {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    position: absolute;
+    top: 70vh;
+    left: 25vw
+}
+
+#instrucciones {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    position: absolute;
+    top: 70vh;
+    left: 50vw;
 }
