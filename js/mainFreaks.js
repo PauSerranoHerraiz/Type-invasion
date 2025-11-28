@@ -36,9 +36,9 @@ class Word {
         this.domElement.style.color = this.color;
         const parentElm = document.getElementById("board-geek")
         parentElm.appendChild(this.domElement)
-                                if (this.isForbidden) {
-                    this.domElement.classList.add("forbidden");
-}
+        if (this.isForbidden) {
+            this.domElement.classList.add("forbidden");
+        }
     }
     updateUi() {
         this.domElement.style.left = this.positionX + "vw";
@@ -52,7 +52,7 @@ class Word {
         const words = ["starwars", "darthvader", "skywalker", "yoda", "kenobi", "tatooine",
             "millenniumfalcon", "starfighter", "matrix", "neo", "trinity", "morpheus",
             "terminator", "skynet", "jurassicpark", "raptor", "godzilla", "kingkong",
-            "predator", "alien", "ripley", "starlord", "groot", "thanos", 
+            "predator", "alien", "ripley", "starlord", "groot", "thanos",
             "batman", "joker", "superman", "wonderwoman", "flash", "greenlantern",
             "aquaman", "spiderman", "venom", "ironman", "captainamerica", "thor",
             "hulk", "blackwidow", "hawkeye", "wolverine", "magneto", "deadpool",
@@ -97,24 +97,24 @@ setInterval(() => {
 
         if (element.positionY > 100) {
 
-    element.domElement.remove();
-    wordInstancesArr.splice(i, 1);
+            element.domElement.remove();
+            wordInstancesArr.splice(i, 1);
 
-    if (element.isForbidden) {
-        return;
-    }
+            if (element.isForbidden) {
+                return;
+            }
 
-    soundFail.currentTime = 0;
-    soundFail.play();
+            soundFail.currentTime = 0;
+            soundFail.play();
 
-    lives -= 1;
-    updateLives();
+            lives -= 1;
+            updateLives();
 
-    if (lives <= 0) {
-        localStorage.setItem("lastScore", score);
-        location.href = "./gameover.html";
-    }
-}
+            if (lives <= 0) {
+                localStorage.setItem("lastScore", score);
+                location.href = "./gameover.html";
+            }
+        }
 
     })
 }, 40)
@@ -131,24 +131,24 @@ typedWord.addEventListener("input", () => {
         }
 
 
-                                if (wordInstance.isForbidden && wordInstance.text === userText) {
-                soundFail.currentTime = 0;
-                soundFail.play();
+        if (wordInstance.isForbidden && wordInstance.text === userText) {
+            soundFail.currentTime = 0;
+            soundFail.play();
 
-                lives -= 1;
-                updateLives();
+            lives -= 1;
+            updateLives();
 
-                wordInstance.domElement.remove();
-                wordInstancesArr.splice(wordInstancesArr.indexOf(wordInstance), 1);
-                typedWord.value = "";
+            wordInstance.domElement.remove();
+            wordInstancesArr.splice(wordInstancesArr.indexOf(wordInstance), 1);
+            typedWord.value = "";
 
-                if (lives <= 0) {
-                    localStorage.setItem("lastScore", score);
-                    location.href = "../gameover.html";
-                }
-
-                return; 
+            if (lives <= 0) {
+                localStorage.setItem("lastScore", score);
+                location.href = "../gameover.html";
             }
+
+            return;
+        }
 
         if (wordInstance.text === userText) {
 
@@ -211,9 +211,21 @@ const indexMusic = document.getElementById("index-music")
 },);
 */
 
+/*
 const gameMusic = document.getElementById("game-music")
 
 document.addEventListener("click", () => {
     gameMusic.volume = 0.2;
     gameMusic.play();
 },);
+*/
+
+const gameMusic = document.getElementById("game-music");
+if (gameMusic) {
+    const saved = localStorage.getItem('ti_volume');
+    gameMusic.volume = saved !== null ? parseFloat(saved) : 0.2;
+
+    document.addEventListener('click', () => {
+        gameMusic.play().catch(() => { });
+    }, { once: true });
+}

@@ -202,7 +202,7 @@ const indexMusic = document.getElementById("index-music")
     indexMusic.volume = 0.2; 
     indexMusic.play();
 },);
-*/
+
 
 const gameMusic = document.getElementById("game-music")
 
@@ -210,3 +210,14 @@ document.addEventListener("click", () => {
     gameMusic.volume = 0.2;
     gameMusic.play();
 },);
+*/
+
+const gameMusic = document.getElementById("game-music");
+if (gameMusic) {
+    const saved = localStorage.getItem('ti_volume');
+    gameMusic.volume = saved !== null ? parseFloat(saved) : 0.2;
+
+    document.addEventListener('click', () => {
+        gameMusic.play().catch(() => { });
+    }, { once: true });
+}
